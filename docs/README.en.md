@@ -182,7 +182,7 @@ After execution, the REPL enters the editor interface, displaying a style like:
 - **Exit editor**: `Ctrl+Q`
 - **Line number display**: The top bar always shows the current file name, total lines, and cursor position (line, column)
 
-For detailed operation instructions, keyboard shortcuts, and advanced configuration (syntax highlighting, search/replace), please refer to the [𝑓OS Text Editor User Guide](./fos/editor/README.md).
+For detailed operation instructions, keyboard shortcuts, and advanced configuration (syntax highlighting, search/replace), please refer to the [𝑓OS Text Editor User Guide](editor.en.md).
 
 > **Note**: The editor is suitable for relatively small text files (recommended < 64KB). Larger files may load slowly due to memory limitations. For binary files, use the `cp` command.
 
