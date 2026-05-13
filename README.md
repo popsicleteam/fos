@@ -1,6 +1,6 @@
 # 𝑓OS 库介绍
 
-[English](docs/README.en.md)
+[English](docs/README.en.md) | [简体中文](README.md)
 
 𝑓OS 是一个为 **MicroPython** 设计的轻量级命令行工具库，提供了类似 Linux 的文件操作、系统信息查看、WiFi 管理以及**内置微型编辑器**功能。  
 所有命令均以函数形式提供，执行后会自动输出一个空行以提升可读性，支持中文文件名的正确对齐显示。
@@ -14,7 +14,7 @@
 
 ## 安装方法
 
-1. 将完整的 `fos` 代码保存为 `fos.py` 文件（复制到 MicroPython 设备上，如 `/flash` 或 `/sd` 路径下）。
+1. 将完整的 `fos` 文件夹复制到 MicroPython 设备上 `/lib` 路径下。
 2. 在 REPL 中导入模块：
 
 ```python
@@ -34,7 +34,7 @@ fos.pwd()
 
 ```python
 >>> pwd()
-/flash
+/
 
 >>> ls()
 boot.py    main.py    lib
