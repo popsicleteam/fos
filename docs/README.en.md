@@ -1,6 +1,6 @@
 # 𝑓OS Library Documentation
 
-[简体中文](../README.md)
+[English](README.en.md) | [简体中文](../README.md)
 
 𝑓OS is a lightweight command-line tool library designed for **MicroPython**, providing Linux-like file operations, system information viewing, WiFi management, and a **built-in miniature editor**.  
 All commands are provided as functions and automatically output a blank line after execution for improved readability. Chinese filenames are correctly aligned.

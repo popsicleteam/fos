@@ -4,6 +4,12 @@ import time
 
 from .editor import edit
 
+# 尝试导入 ble_uart_repl 模块，若失败则不启用 BLE REPL
+try:
+    from .ble_uart_repl import start_ble_repl, stop_ble_repl
+except ImportError:
+    pass
+
 # 尝试导入 network 模块，若失败则标记 WiFi 不可用
 try:
     import network
@@ -26,6 +32,7 @@ def _disp_len(s):
 
 
 def _pad(s, width, align="<"):
+    """按显示宽度填充空格"""
     cur = _disp_len(s)
     if cur >= width:
         return s
@@ -38,6 +45,7 @@ def _pad(s, width, align="<"):
 
 # ========== 辅助检查函数 ==========
 def _exists(path):
+    """判断路径是否存在"""
     try:
         os.stat(path)
         return True
@@ -46,6 +54,7 @@ def _exists(path):
 
 
 def _is_dir(path):
+    """判断是否为目录"""
     try:
         st = os.stat(path)
         return (st[0] & 0x4000) != 0
@@ -54,6 +63,7 @@ def _is_dir(path):
 
 
 def _is_file(path):
+    """判断是否为普通文件"""
     try:
         st = os.stat(path)
         return (st[0] & 0x4000) == 0
@@ -62,6 +72,7 @@ def _is_file(path):
 
 
 def _parent_exists(path):
+    """判断父目录是否存在"""
     if "/" not in path:
         return True
     parent = path[: path.rfind("/")]
@@ -72,11 +83,13 @@ def _parent_exists(path):
 
 # ========== 路径与目录操作 ==========
 def pwd():
+    """显示当前工作目录"""
     print(os.getcwd())
     print()
 
 
 def cd(path):
+    """切换当前工作目录"""
     try:
         os.chdir(path)
     except Exception as e:
@@ -85,6 +98,7 @@ def cd(path):
 
 
 def ls(path=".", long=False):
+    """列出目录内容（支持短格式和长格式）"""
     try:
         items = os.listdir(path)
         if not long:
@@ -155,7 +169,7 @@ def ls(path=".", long=False):
 
 
 def mkdir(path):
-    """创建目录，父目录必须存在"""
+    """创建目录（父目录必须存在）"""
     if not _parent_exists(path):
         print("Error: Parent directory does not exist.")
         print()
@@ -190,9 +204,9 @@ def rmdir(path):
 def cp(src, dst, dir=False):
     """
     复制文件或目录
-    src: 源路径
-    dst: 目标路径
-    dir: 若为 True，则递归复制目录（源必须是目录）
+    src:  源路径
+    dst:  目标路径
+    dir:  若为 True，则递归复制目录（源必须是目录）
     """
     try:
         if dir:
@@ -339,10 +353,17 @@ def touch(path):
 
 # ========== 系统信息（不依赖WiFi） ==========
 def uname():
-    """显示系统信息（类似于 Linux uname -a）"""
+    """显示系统信息（格式化对齐输出）"""
     try:
         u = os.uname()
-        print(u.sysname, u.nodename, u.release, u.version, u.machine)
+        # 属性名称列表
+        attrs = ["sysname", "nodename", "release", "version", "machine"]
+        # 找出最长的属性名长度，用于对齐冒号
+        max_len = max(len(attr) for attr in attrs)
+        for attr in attrs:
+            value = getattr(u, attr)
+            # 右对齐属性名，然后跟冒号和空格，再输出值
+            print(f"{attr:>{max_len}}: {value}")
     except Exception as e:
         print("Error:", e)
     print()
@@ -481,6 +502,11 @@ def date():
     except Exception as e:
         print("Error:", e)
     print()
+
+
+def clear():
+    """清屏（类似 Linux clear 命令）"""
+    print("\033[2J\033[H", end="")
 
 
 # ========== WiFi 功能（扫描、连接、创建热点、NTP同步、ifconfig） ==========
@@ -654,10 +680,7 @@ if _wifi_available:
         print()
 
     def ntp_sync(server="pool.ntp.org"):
-        """
-        通过 NTP 同步系统时间（需要 WiFi 连接）
-        server: NTP 服务器地址
-        """
+        """通过 NTP 同步系统时间（需要 WiFi 连接）"""
         try:
             wlan = network.WLAN(network.STA_IF)
             if not wlan.isconnected():

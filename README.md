@@ -1,6 +1,6 @@
 # 𝑓OS 库介绍
 
-[English](docs/README.en.md)
+[English](docs/README.en.md) | [简体中文](README.md)
 
 𝑓OS 是一个为 **MicroPython** 设计的轻量级命令行工具库，提供了类似 Linux 的文件操作、系统信息查看、WiFi 管理以及**内置微型编辑器**功能。  
 所有命令均以函数形式提供，执行后会自动输出一个空行以提升可读性，支持中文文件名的正确对齐显示。
