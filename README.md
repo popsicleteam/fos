@@ -1,6 +1,6 @@
 # 𝑓OS 库介绍
 
-[English](docs/README.en.md) | [简体中文](README.md)
+[English](docs/README.en.md)
 
 𝑓OS 是一个为 **MicroPython** 设计的轻量级命令行工具库，提供了类似 Linux 的文件操作、系统信息查看、WiFi 管理以及**内置微型编辑器**功能。  
 所有命令均以函数形式提供，执行后会自动输出一个空行以提升可读性，支持中文文件名的正确对齐显示。
@@ -11,10 +11,11 @@
 - **内置编辑器**：`edit` – 在 REPL 中直接编辑文本文件
 - **系统信息**：`uname`, `free`, `df`, `date`
 - **WiFi 管理**：`iwlist_scan`(扫描), `iwconfig`(状态查看/连接), `create_ap`(创建热点), `ifconfig`(网络配置), `ntp_sync`(NTP 时间同步)
+- **BLE REPL**：`start_ble_repl`(开启), `stop_ble_repl`(停止)
 
 ## 安装方法
 
-1. 将完整的 `fos` 文件夹复制到 MicroPython 设备上 `/lib` 路径下。
+1. 将完整的 `fos` 代码保存为 `fos.py` 文件（复制到 MicroPython 设备上，如 `/flash` 或 `/sd` 路径下）。
 2. 在 REPL 中导入模块：
 
 ```python
@@ -34,7 +35,7 @@ fos.pwd()
 
 ```python
 >>> pwd()
-/
+/flash
 
 >>> ls()
 boot.py    main.py    lib
@@ -182,9 +183,16 @@ Fri May 12 10:31:00 UTC 2023
 - **退出编辑器**：`Ctrl+Q`
 - **行号显示**：顶部始终显示当前文件名、总行数、行列位置
 
-详细的操作说明、快捷键列表以及高级配置（语法高亮、搜索替换等）请参阅 [𝑓OS 文本编辑器使用说明](docs/editor.md)。
+详细的操作说明、快捷键列表以及高级配置（语法高亮、搜索替换等）请参阅 [𝑓OS 文本编辑器使用说明](./fos/editor/README.zh-Hans.md)。
 
 > **注意**：编辑器适用于较小的文本文件（建议 < 64KB），大文件可能会因内存限制而加载缓慢。对于二进制文件请使用 `cp` 命令。
+
+### 5. BLE REPL
+
+通过 BLE 传输数据，实现无线 REPL 连接。启动后，电脑端通过 BLE 串口连接到设备。
+
+- **启动 BLE REPL**：`start_ble_repl()`
+- **停止 BLE REPL**：`stop_ble_repl()`
 
 ## 命令参考
 

@@ -1,6 +1,6 @@
 # 𝑓OS 文本编辑器使用说明
 
-[English](editor.en.md) | [简体中文](editor.md)
+[English](editor.en.md)
 
 这是一个专为 **MicroPython** （如 ESP32、RP2040、PyBoard 等）编写的**纯文本编辑器**，提供基础编辑功能，适用于通过串口终端（PuTTY、minicom、screen 等）直接编辑设备上的文件。
 

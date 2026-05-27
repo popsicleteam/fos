@@ -1,6 +1,6 @@
 # 𝑓OS Library Documentation
 
-[English](README.en.md) | [简体中文](../README.md)
+[简体中文](../README.md)
 
 𝑓OS is a lightweight command-line tool library designed for **MicroPython**, providing Linux-like file operations, system information viewing, WiFi management, and a **built-in miniature editor**.  
 All commands are provided as functions and automatically output a blank line after execution for improved readability. Chinese filenames are correctly aligned.
@@ -11,10 +11,11 @@ All commands are provided as functions and automatically output a blank line aft
 - **Built-in Editor**: `edit` – edit text files directly in the REPL
 - **System Information**: `uname`, `free`, `df`, `date`
 - **WiFi Management**: `iwlist_scan` (scan), `iwconfig` (status/connect), `create_ap` (create hotspot), `ifconfig` (network config), `ntp_sync` (NTP time sync)
+- **BLE REPL**: `start_ble_repl` (start), `stop_ble_repl` (stop)
 
 ## Installation
 
-1. Copy the `fos` folder to your MicroPython device under `/lib`.
+1. Save the complete `fos` code as `fos.py` (copy it to your MicroPython device, e.g., under `/flash` or `/sd`).
 2. Import the module in the REPL:
 
 ```python
@@ -34,7 +35,7 @@ fos.pwd()
 
 ```python
 >>> pwd()
-/
+/flash
 
 >>> ls()
 boot.py    main.py    lib
@@ -182,9 +183,16 @@ After execution, the REPL enters the editor interface, displaying a style like:
 - **Exit editor**: `Ctrl+Q`
 - **Line number display**: The top bar always shows the current file name, total lines, and cursor position (line, column)
 
-For detailed operation instructions, keyboard shortcuts, and advanced configuration (syntax highlighting, search/replace), please refer to the [𝑓OS Text Editor User Guide](editor.en.md).
+For detailed operation instructions, keyboard shortcuts, and advanced configuration (syntax highlighting, search/replace), please refer to the [𝑓OS Text Editor User Guide](./fos/editor/README.md).
 
 > **Note**: The editor is suitable for relatively small text files (recommended < 64KB). Larger files may load slowly due to memory limitations. For binary files, use the `cp` command.
+
+### 5. BLE REPL
+
+Transfer data over BLE to achieve a wireless REPL connection. After starting, connect to the device from a computer via a BLE serial port.
+
+- **Start BLE REPL**: `start_ble_repl()`
+- **Stop BLE REPL**: `stop_ble_repl()`
 
 ## Command Reference
 

@@ -1,6 +1,6 @@
 # 𝑓OS Text Editor User Guide
 
-[English](editor.en.md) | [简体中文](editor.md)
+[简体中文](editor.md)
 
 A **plain text editor** written specifically for **MicroPython** (e.g., ESP32, RP2040, PyBoard, etc.). It provides basic editing capabilities for directly modifying files on the device through a serial terminal (PuTTY, minicom, screen, etc.).
 
