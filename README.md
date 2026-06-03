@@ -11,7 +11,6 @@
 - **内置编辑器**：`edit` – 在 REPL 中直接编辑文本文件
 - **系统信息**：`uname`, `free`, `df`, `date`
 - **WiFi 管理**：`iwlist_scan`(扫描), `iwconfig`(状态查看/连接), `create_ap`(创建热点), `ifconfig`(网络配置), `ntp_sync`(NTP 时间同步)
-- **BLE REPL**：`start_ble_repl`(开启), `stop_ble_repl`(停止)
 
 ## 安装方法
 
@@ -186,13 +185,6 @@ Fri May 12 10:31:00 UTC 2023
 详细的操作说明、快捷键列表以及高级配置（语法高亮、搜索替换等）请参阅 [𝑓OS 文本编辑器使用说明](./fos/editor/README.zh-Hans.md)。
 
 > **注意**：编辑器适用于较小的文本文件（建议 < 64KB），大文件可能会因内存限制而加载缓慢。对于二进制文件请使用 `cp` 命令。
-
-### 5. BLE REPL
-
-通过 BLE 传输数据，实现无线 REPL 连接。启动后，电脑端通过 BLE 串口连接到设备。
-
-- **启动 BLE REPL**：`start_ble_repl()`
-- **停止 BLE REPL**：`stop_ble_repl()`
 
 ## 命令参考
 

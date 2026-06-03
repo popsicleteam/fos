@@ -4,12 +4,6 @@ import time
 
 from .editor import edit
 
-# 尝试导入 ble_uart_repl 模块，若失败则不启用 BLE REPL
-try:
-    from .ble_uart_repl import start_ble_repl, stop_ble_repl
-except ImportError:
-    pass
-
 # 尝试导入 network 模块，若失败则标记 WiFi 不可用
 try:
     import network
