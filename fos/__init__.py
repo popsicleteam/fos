@@ -12,6 +12,30 @@ try:
 except ImportError:
     _wifi_available = False
 
+__all__ = (
+    "cwd",
+    "cd",
+    "ls",
+    "mkdir",
+    "rmdir",
+    "cp",
+    "mv",
+    "rm",
+    "cat",
+    "touch",
+    "uname",
+    "free",
+    "df",
+    "date",
+    "clear",
+    "iwlist_scan",
+    "iwconfig",
+    "create_ap",
+    "ntp_sync",
+    "ifconfig",
+    "edit",
+)
+
 
 # ========== 字符串显示宽度辅助函数 ==========
 def _disp_len(s):
@@ -76,7 +100,7 @@ def _parent_exists(path):
 
 
 # ========== 路径与目录操作 ==========
-def pwd():
+def cwd():
     """显示当前工作目录"""
     print(os.getcwd())
     print()

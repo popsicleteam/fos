@@ -7,7 +7,7 @@
 
 ## 主要功能
 
-- **文件与路径操作**：`pwd`, `cd`, `ls`, `mkdir`, `rmdir`, `cp`, `mv`, `rm`, `cat`, `touch`
+- **文件与路径操作**：`cwd`, `cd`, `ls`, `mkdir`, `rmdir`, `cp`, `mv`, `rm`, `cat`, `touch`
 - **内置编辑器**：`edit` – 在 REPL 中直接编辑文本文件
 - **系统信息**：`uname`, `free`, `df`, `date`
 - **WiFi 管理**：`iwlist_scan`(扫描), `iwconfig`(状态查看/连接), `create_ap`(创建热点), `ifconfig`(网络配置), `ntp_sync`(NTP 时间同步)
@@ -25,7 +25,7 @@ from fos import *
 
 ```python
 import fos
-fos.pwd()
+fos.cwd()
 ```
 
 ## 快速上手
@@ -33,7 +33,7 @@ fos.pwd()
 ### 1. 基本文件操作
 
 ```python
->>> pwd()
+>>> cwd()
 /flash
 
 >>> ls()
@@ -192,7 +192,7 @@ Fri May 12 10:31:00 UTC 2023
 
 | 命令                       | 参数                   | 说明                                                        |
 | -------------------------- | ---------------------- | ----------------------------------------------------------- |
-| `pwd()`                    | 无                     | 显示当前工作目录                                            |
+| `cwd()`                    | 无                     | 显示当前工作目录                                            |
 | `cd(path)`                 | 路径                   | 切换工作目录                                                |
 | `ls(path='.', long=False)` | 目录路径, 是否长格式   | 短格式：Tab分隔、自动换行；长格式：表格显示类型、名称、大小 |
 | `mkdir(path)`              | 目录名                 | 创建目录（父目录必须存在）                                  |
